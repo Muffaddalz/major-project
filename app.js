@@ -3,8 +3,8 @@
 
 // SELECT ELEMENTS
 const iconelement = document.querySelector(".weather-icon");
-const tempelement = document.querySelector(".temperature-value p");
-const descelement = document.querySelector(".temperature-discription p");
+const tempelement = document.querySelector(".weather-value p");
+const descelement = document.querySelector(".weather-discription p");
 const locationelement = document.querySelector(".location p");
 const notificationelement = document.querySelector(".notification");
 
@@ -17,10 +17,10 @@ weather.temperature = { unit: "celsius" }
 const kelvin = 273;
 
 // API KEY
-const key = "126f6bb1b91f8cb05a1171fda78318fd api key";
+const key = "126f6bb1b91f8cb05a1171fda78318fd";
 
 // check whether the browser supportsdeolocations
-if ('geological' in navigator) {
+if ('geolocation' in navigator) {
     navigator.geolocation.getCurrentPosition(setposition, showError);
 }
 
@@ -45,22 +45,21 @@ function showError(error) {
 
 // GET WEATHER FROM API ROVIDER
 function getWeather(latitude, longitude) {
-    let api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`
+    let api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
 
     fetch(api)
-        .then(function (response) {
-            let data = response.json();
+        .then((response) => {
+		return response.json();
         })
-        .then(function (data) {
-            weather.temperature.value = math.floor(data.main.temp - kelvin);
-            weather.description = data.weather[0].discription;
-            // weather.iconId = data.weather[0].icon;
-            weather.city = data.name;
-            weather.country = data.sys.country;
-        })
-        .then(function () {
-            displayWeather();
-        })
+	.then((data) => {
+		weather.temperature.value = Math.floor(data.main.temp - kelvin);
+		weather.description = data.weather[0].description;
+		weather.city = data.name;
+		weather.country = data.sys.country;
+	})
+	.then((ele) => {
+		displayWeather();
+	})
 }
 
 // DISPLAY WEATHER TO UPI
@@ -77,7 +76,7 @@ function cesiustofahrenheit(temperature) {
 }
 
 // WHEN THE YSER CLICKS ON THE TEMPERATURE
-tempelement.addEventListener("click", function () {
+tempelement.addEventListener("click", (ele) => {
     if (weather.temperature.value === undefined) return;
 
     if (weather.temperature.unit == "celsius") {

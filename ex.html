@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="boot.css">
+  <style>
+    #form {
+      background-color: aqua;
+      height: 200px;
+      width: 400px;
+
+    }
+
+    input {
+      border: transparent;
+    }
+
+    .container{
+      width: 200px;
+      height: 200px;
+      background-color: brown;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <form id="form" align='center'>
+    <h1>Simple Form</h1>
+    <label>Email</label>
+    <input type="Email" pattern="@gmail.com" required><br><br>
+    <label>Password</label>
+    <input type="password" required><br><br>
+    <button onclick="update()">Submit</button>
+  </form>
+  <script>
+    function update() {
+      document.getElementById("form").textContent = "Thank you for registering"
+    }
+  </script> -->
+
+  <div class="container" onmouseenter="color()">
+
+  </div>
+    <script>
+      function color(){
+        var r = Math.floor(Math.random()*255)
+        var g = Math.floor(Math.random()*255)
+        var b = Math.floor(Math.random()*255)
+        var color = 'rgb('+r+','+g+','+b+')'
+        document.querySelector(".container").style.background=color
+      }
+    </script>
+</body>
+
+</html>
